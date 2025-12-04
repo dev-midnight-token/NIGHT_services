@@ -4,7 +4,7 @@ import (
 	"log"
 	"os"
 
-	_ "coinStats"
+	_ "midnight.network/coinStats"
 
 	"github.com/GoogleCloudPlatform/functions-framework-go/funcframework"
 )
