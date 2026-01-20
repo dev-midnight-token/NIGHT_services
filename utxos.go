@@ -67,7 +67,7 @@ func init() {
 
 // helloWorld writes "Hello, World!" to the HTTP response.
 func circulatingSupply(w http.ResponseWriter, r *http.Request) {
-	var rowNIGHT = getAddress().Rows[0]
+	var rowNIGHT = getAddress().Rows[1]
 	supply, err := strconv.Atoi(rowNIGHT.Supply)
 	if err != nil {
 		log.Fatalf("Error converting supply to int: %v", err)
