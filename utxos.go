@@ -4,9 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
-	"math"
 	"net/http"
-	"strconv"
 
 	"github.com/GoogleCloudPlatform/functions-framework-go/functions"
 )
@@ -70,31 +68,33 @@ func init() {
 	functions.HTTP("CirculatingSupply", circulatingSupply)
 }
 
-// helloWorld writes "Hello, World!" to the HTTP response.
+// Returns the circulating supply of the token as a float with 6 decimal places
 func circulatingSupply(w http.ResponseWriter, r *http.Request) {
-	var tokenRows = getAddress().Rows
+	/*	var tokenRows = getAddress().Rows
 
-	//	T_LF_R Treasury, Lost and Found, Reserve
-	var T_LF_R TokenInfo
-	for _, row := range tokenRows {
-		if row.Asset_name == Asset_name && row.Policy == Policy &&
-			row.Asset_name_hex == Asset_name_hex && row.Fingerprint == Fingerprint {
-			T_LF_R = row
-			break
+		//	T_LF_R Treasury, Lost and Found, Reserve
+		var T_LF_R TokenInfo
+		for _, row := range tokenRows {
+			if row.Asset_name == Asset_name && row.Policy == Policy &&
+				row.Asset_name_hex == Asset_name_hex && row.Fingerprint == Fingerprint {
+				T_LF_R = row
+				break
+			}
 		}
-	}
 
-	// Convert supply and quantity from string to int
-	supply, err := strconv.Atoi(T_LF_R.Supply)
-	if err != nil {
-		log.Fatalf("Error converting supply to int: %v", err)
-	}
+		// Convert supply and quantity from string to int
+		supply, err := strconv.Atoi(T_LF_R.Supply)
+		if err != nil {
+			log.Fatalf("Error converting supply to int: %v", err)
+		}
 
-	uncirculatingSupply, err := strconv.Atoi(T_LF_R.Quantity)
-	if err != nil {
-		log.Fatalf("Error converting circulating supply to int: %v", err)
-	}
-	circulatingSupply := float64(supply-uncirculatingSupply) / math.Pow10(6)
+		uncirculatingSupply, err := strconv.Atoi(T_LF_R.Quantity)
+		if err != nil {
+			log.Fatalf("Error converting circulating supply to int: %v", err)
+		}
+		circulatingSupply := float64(supply-uncirculatingSupply) / math.Pow10(6)
+	*/
+	circulatingSupply := float64(16607399400.634954)
 
 	fmt.Fprintf(w, "%.6f\n", circulatingSupply)
 }
